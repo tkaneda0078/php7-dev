@@ -2,17 +2,16 @@
 
 require_once 'Classes/Auth/index.php';
 
+use \Classes\Auth\Auth;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $auth = new \Classes\Auth\Auth();
+  $auth = new Auth();
 
   $user_name = filter_input(INPUT_POST, 'username');
   $password = filter_input(INPUT_POST, 'password');
 
-  if ($auth->login($user_name, $password)) {
-    var_dump('success');
-  } else {
-    var_dump('failure');
-  }
+  // login
+  $auth->login($user_name, $password);
 
 }
 

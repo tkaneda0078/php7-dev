@@ -22,15 +22,14 @@ class Auth
    *
    * @param string $user_name
    * @param string $password
-   * @return bool
+   * @return void
    */
-  public function login(string $user_name, string $password): bool
+  public function login(string $user_name, string $password): void
   {
     if (password_verify($password, $this->hash_password[$user_name])) {
-      // todo : sessionにぶちこみ
-      return true;
+      header('Location: /hello');
+      exit;
     }
-    return false;
   }
 
 }
